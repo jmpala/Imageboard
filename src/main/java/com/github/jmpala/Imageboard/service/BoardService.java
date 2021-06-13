@@ -1,12 +1,11 @@
 package com.github.jmpala.Imageboard.service;
 
 import com.github.jmpala.Imageboard.base.BaseService;
-import com.github.jmpala.Imageboard.dao.Board;
+import com.github.jmpala.Imageboard.dto.BoardDto;
 
 import java.util.List;
-import java.util.UUID;
 
-public interface BoardService extends BaseService<Board, Long> {
+public interface BoardService extends BaseService<BoardDto, Long> {
 
-    List<Board> findByCategory(String category);
+    List<BoardDto> findByCategory(String category);
 }

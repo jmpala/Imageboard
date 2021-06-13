@@ -3,15 +3,15 @@ package com.github.jmpala.Imageboard.base;
 import java.util.List;
 import java.util.Optional;
 
-public interface BaseService<ENTITY extends BaseEntity, ID> {
+public interface BaseService<DTO, ID> {
 
-    public List<ENTITY> findAll();
+    public List<DTO> findAll();
 
-    public Optional<ENTITY> findById(ID id);
+    public Optional<DTO> findById(ID id);
 
-    public ENTITY save(ENTITY e);
+    public DTO save(DTO e);
 
-    void delete(ENTITY e);
+    void delete(DTO e);
 
     void deleteById(ID id);
 }

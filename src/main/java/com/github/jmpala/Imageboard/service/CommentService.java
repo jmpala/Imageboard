@@ -1,7 +1,7 @@
 package com.github.jmpala.Imageboard.service;
 
 import com.github.jmpala.Imageboard.base.BaseService;
-import com.github.jmpala.Imageboard.dao.Comment;
+import com.github.jmpala.Imageboard.dto.CommentDto;
 
-public interface CommentService extends BaseService<Comment, Long> {
+public interface CommentService extends BaseService<CommentDto, Long> {
 }
