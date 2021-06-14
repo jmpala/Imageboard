@@ -64,4 +64,13 @@ public class PostServiceImpl implements PostService {
         postRepository.deleteById(id);
     }
 
+    @Override
+    public List<PostDto> findLast30() {
+        List<Post> posts = postRepository.findTop30ByOrderByCreatedDesc();
+        List<PostDto> postDtos = new ArrayList<>();
+        for (Post post: posts) {
+            postDtos.add(postMapper.postToPostDto(post));
+        }
+        return postDtos;
+    }
 }
