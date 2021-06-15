@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface BoardService extends BaseService<BoardDto, Long> {
 
-    List<BoardDto> findByCategory(String category);
 }

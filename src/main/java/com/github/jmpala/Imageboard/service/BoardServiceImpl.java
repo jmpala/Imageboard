@@ -66,14 +66,4 @@ public class BoardServiceImpl implements BoardService {
         boardRepository.deleteById(id);
     }
 
-    @Override
-    @Transactional
-    public List<BoardDto> findByCategory(String category) {
-        List<Board> boards = boardRepository.findByCategory(category);
-        List<BoardDto> boardDtos = new ArrayList<>();
-        for (Board board: boards) {
-            boardDtos.add(boardMapper.boardToBoardDto(board));
-        }
-        return boardDtos;
-    }
 }
