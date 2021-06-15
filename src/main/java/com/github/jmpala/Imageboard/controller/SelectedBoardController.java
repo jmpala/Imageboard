@@ -1,6 +1,7 @@
 package com.github.jmpala.Imageboard.controller;
 
 import com.github.jmpala.Imageboard.service.BoardServiceImpl;
+import com.github.jmpala.Imageboard.service.CategoryServiceImpl;
 import com.github.jmpala.Imageboard.service.CommentServiceImpl;
 import com.github.jmpala.Imageboard.service.PostServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ public class SelectedBoardController {
     private BoardServiceImpl boardService;
     private PostServiceImpl threadService;
     private CommentServiceImpl postServiceImpl;
+    private CategoryServiceImpl categoryService;
 
     @Autowired
     public SelectedBoardController(BoardServiceImpl boardService, PostServiceImpl threadService, CommentServiceImpl postServiceImpl) {

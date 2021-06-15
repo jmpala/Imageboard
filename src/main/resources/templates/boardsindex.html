@@ -19,19 +19,25 @@
 
         <div>
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="/">Imageboard</a>
+                <a class="navbar-brand" href="/boards/">Voxed Name</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
                         aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="toggleMobileMenu">
                     <ul class="navbar-nav  me-auto text-center">
-                        <li>
-                            <a class="nav-link" >Categorias:</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categorias
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li th:each="board : ${boards}">
+                                    <a class="nav-link" th:text="${board.shortName}" th:href="'/boards/' + ${board.fullName}"></a>
+                                </li>
+                            </ul>
                         </li>
-                        <li th:each="board : ${boards}">
-                            <a class="nav-link" th:text="${board.shortName}" th:href="'/boards/' + ${board.fullName}"></a>
-                        </li>
+
                     </ul>
                     <ul class="navbar-nav  text-center">
                         <li>
@@ -50,6 +56,12 @@
                 </div>
             </nav>
         </div>
+
+
+
+
+
+
 
         <div class="row g-1">
             <div class="col-sm-12 col-md-4 col-lg-2" th:each="post : ${posts}">
