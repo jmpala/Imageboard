@@ -13,9 +13,4 @@ public class CategoryDto {
 
     private String categoryName;
 
-    private boolean isAvailable;
-
-    private boolean isNSFW;
-
-    private BoardDto boards;
 }

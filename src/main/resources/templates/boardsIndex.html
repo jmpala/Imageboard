@@ -32,8 +32,8 @@
                                 Categorias
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li th:each="board : ${boards}">
-                                    <a class="nav-link" th:text="${board.shortName}" th:href="'/boards/' + ${board.fullName}"></a>
+                                <li th:each="category : ${categories}">
+                                    <a class="nav-link" th:text="${category.categoryName}" th:href="'/board/' + ${category.categoryName}"></a>
                                 </li>
                             </ul>
                         </li>

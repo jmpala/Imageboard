@@ -27,7 +27,7 @@ public class BoardsController {
 
     @RequestMapping("/board/index")
     public String showBoardsIndex(Model model) {
-        model.addAttribute("boards",boardService.findAll());
+        model.addAttribute("categories",categoryService.findAll());
         model.addAttribute("posts", postService.findLast30());
         return "boardsIndex.html";
     }
