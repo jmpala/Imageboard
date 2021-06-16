@@ -73,4 +73,15 @@ public class PostServiceImpl implements PostService {
         }
         return postDtos;
     }
+
+    @Override
+    @Transactional
+    public List<PostDto> findByCategory(String category) {
+        List<Post> posts = postRepository.findByCategory(category);
+        List<PostDto> postDtos = new ArrayList<>();
+        for (Post post: posts) {
+            postDtos.add(postMapper.postToPostDto(post));
+        }
+        return postDtos;
+    }
 }

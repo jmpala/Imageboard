@@ -8,4 +8,6 @@ import java.util.List;
 public interface PostService extends BaseService<PostDto, Long> {
 
     List<PostDto> findLast30();
+
+    List<PostDto> findByCategory(String category);
 }

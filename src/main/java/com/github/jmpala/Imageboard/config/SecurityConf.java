@@ -13,7 +13,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/boards", "/boards/**", "/webjars/**").permitAll()
+                    .antMatchers("/", "/board/**", "/webjars/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
