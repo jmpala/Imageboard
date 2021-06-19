@@ -42,8 +42,8 @@ CREATE TABLE comments (
 CREATE TABLE users (
     ID BIGINT NOT NULL,
     username VARCHAR(50),
-    password VARCHAR(50),
-    is_enabled BIT(1),
+    password VARCHAR(255),
+    enabled BIT(1),
     PRIMARY KEY (ID)
 );
 

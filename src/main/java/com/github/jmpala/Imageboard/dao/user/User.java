@@ -25,6 +25,6 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Role> role;
 
-    @Column(name = "is_enabled")
+    @Column(name = "enabled")
     private boolean enabled;
 }
