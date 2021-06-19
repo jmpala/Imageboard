@@ -62,8 +62,10 @@
                 <div class="card bg-dark text-white">
                     <img src="..." class="card-img" alt="..." height="194" width="194">
                     <div class="card-img-overlay">
-                        <h5 class="card-title" th:text="${post.title}"></h5>
-                        <p class="card-text" th:text="${post.created}"></p>
+                        <a th:href="'/post/' + ${post.id}">
+                            <h5 class="card-title" th:text="${post.title}"></h5>
+                            <p class="card-text" th:text="${post.created}"></p>
+                        </a>
                     </div>
                 </div>
             </div>

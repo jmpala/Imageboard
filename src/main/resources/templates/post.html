@@ -10,38 +10,47 @@
 
 </head>
 <body>
+<div class="container">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <div th:each="board : ${boards}">
-              <li><a class="dropdown-item" th:text="${board.shortName}" th:href="'/boards/' + ${board.fullName}">Action</a></li>
-            </div>
-          </ul>
-        </li>
-      </ul>
-    </div>
+  <div>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <a class="navbar-brand" href="/board/index">Voxed</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
+              aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="toggleMobileMenu">
+        <ul class="navbar-nav  me-auto text-center">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categorias
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li th:each="category : ${categories}">
+                <a class="nav-link" th:text="${category.categoryName}" th:href="'/board/' + ${category.categoryName}"></a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+        <ul class="navbar-nav  text-center">
+          <li>
+            <a class="nav-link" href="#">Reglas</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Registrarse</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-</nav>
 
 <div class="row">
   <h1 th:text="${post.title}"></h1>
@@ -53,6 +62,7 @@
   </ul>
 </div>
 
+</div>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"> </script>
 <script th:src="@{/webjars/jquery/jquery.min.js}" ></script>
 </body>
