@@ -15,7 +15,7 @@ public class PostDto {
 
     private Date created;
 
-    private Byte[] photo;
+    private String photo;
 
     private String title;
 

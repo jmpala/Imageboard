@@ -31,15 +31,20 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/board/**","/post/**", "/webjars/**").permitAll()
-                    .anyRequest().authenticated()
+                    .antMatchers("/", "/board/**","/post/**", "/webjars/**", "/h2", "/h2/**").permitAll()
+                    .anyRequest().permitAll()
                     .and()
                 .formLogin()
                     .loginPage("/login")
                     .permitAll()
                     .and()
                 .logout()
-                    .permitAll();
+                    .permitAll()
+                .and()
+                    .csrf().ignoringAntMatchers("/h2/**");
+
+        //For H2 DB
+        http.headers().frameOptions().disable();
     }
 
 }

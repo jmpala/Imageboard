@@ -19,8 +19,8 @@ public class Comment extends BaseEntity {
     @Column(name = "created")
     private Date created;
 
-    @Column(name = "attachment")
-    private Byte[] attachment;
+    @Column(name = "attachment_path")
+    private String attachment;
 
     @Column(name = "message")
     private String message;

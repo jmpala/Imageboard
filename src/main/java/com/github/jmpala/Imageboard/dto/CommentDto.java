@@ -13,7 +13,7 @@ public class CommentDto {
 
     private Date created;
 
-    private Byte[] attachment;
+    private String attachment;
 
     private String message;
 

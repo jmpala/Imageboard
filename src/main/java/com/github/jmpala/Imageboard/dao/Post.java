@@ -20,8 +20,8 @@ public class Post extends BaseEntity {
     @Column(name = "created")
     private Date created;
 
-    @Column(name = "photo")
-    private Byte[] photo;
+    @Column(name = "photo_path")
+    private String photoPath;
 
     @Column(name = "title")
     private String title;
