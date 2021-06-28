@@ -1,7 +1,8 @@
 package com.github.jmpala.Imageboard.dto;
 
-import com.github.jmpala.Imageboard.dao.Board;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,9 @@ public class PostDto {
 
     private String body;
 
-    private Board boardDto;
+    private BoardDto boardDto;
+
+    private Long boardId;
 
     private List<CommentDto> comments;
 }

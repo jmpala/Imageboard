@@ -6,8 +6,7 @@ import com.github.jmpala.Imageboard.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -30,8 +29,20 @@ public class PostController {
         Optional<PostDto> oPostDto = postService.findById(Long.valueOf(post_id));
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("post", oPostDto.get());
-
         return "post.html";
+    }
+
+    @GetMapping("/post/create")
+    public String showCreatePost(Model model){
+        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("postDto", new PostDto());
+        return "createPost.html";
+    }
+
+    @PostMapping("/post/create")
+    public String createPost(@ModelAttribute PostDto postDto, Model model){
+        PostDto savePostDto = postService.save(postDto);
+        return "redirect:/post/" + savePostDto.getId();
     }
 
 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+</head>
+<body>
+<div class="container">
+
+    <div>
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="/board/index">Voxed</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
+                    aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="toggleMobileMenu">
+                <ul class="navbar-nav  me-auto text-center">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li th:each="category : ${categories}">
+                                <a class="nav-link" th:text="${category.categoryName}" th:href="'/board/' + ${category.categoryName}"></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav  text-center">
+                    <li>
+                        <a class="nav-link" href="#">Reglas</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <form action="#" th:action="@{/post/create}" th:object="${postDto}" method="post">
+        <table border="1">
+            <tr>
+                <td><label th:text="Photo" /></td>
+                <td><input type="text" th:field="*{photo}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Title" /></td>
+                <td><input type="text" th:field="*{title}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Body" /></td>
+                <td><input type="text" th:field="*{body}" /></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Choose a category</label>
+                </td>
+                <td>
+                    <select th:field="*{boardId}" >
+                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.categoryName}"></option>
+
+                    </select>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Create" /></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"> </script>
+<script th:src="@{/webjars/jquery/jquery.min.js}" ></script>
+</body>
+</html>
