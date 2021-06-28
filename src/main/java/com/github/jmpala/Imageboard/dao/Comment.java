@@ -14,6 +14,7 @@ import java.util.Date;
 public class Comment extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "created")
