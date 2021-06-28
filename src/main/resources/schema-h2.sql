@@ -1,11 +1,11 @@
 CREATE TABLE categories (
-    ID BIGINT NOT NULL,
+    ID BIGINT NOT NULL AUTO_INCREMENT,
     category_name VARCHAR(20),
     PRIMARY KEY (ID)
 );
 
 CREATE TABLE boards (
-    ID BIGINT NOT NULL,
+    ID BIGINT NOT NULL AUTO_INCREMENT,
     full_name VARCHAR(20),
     short_name VARCHAR(10),
     is_available BIT(1),
@@ -17,7 +17,7 @@ CREATE TABLE boards (
 );
 
 CREATE TABLE posts (
-    ID BIGINT NOT NULL,
+    ID BIGINT NOT NULL AUTO_INCREMENT,
     created DATE,
     photo_path VARCHAR(255),
     title VARCHAR(25),
@@ -29,7 +29,7 @@ CREATE TABLE posts (
 );
 
 CREATE TABLE comments (
-    ID BIGINT NOT NULL,
+    ID BIGINT NOT NULL AUTO_INCREMENT,
     created DATE,
     attachment_path VARCHAR(255),
     message VARCHAR(255),
@@ -40,7 +40,7 @@ CREATE TABLE comments (
 );
 
 CREATE TABLE users (
-    ID BIGINT NOT NULL,
+    ID BIGINT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50),
     password VARCHAR(255),
     enabled BIT(1),
@@ -48,7 +48,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE roles (
-    ID BIGINT NOT NULL,
+    ID BIGINT NOT NULL AUTO_INCREMENT,
     role VARCHAR(50),
     user_id BIGINT,
     PRIMARY KEY (ID),
