@@ -1,7 +1,6 @@
 package com.github.jmpala.Imageboard.service;
 
 import com.github.jmpala.Imageboard.dao.Board;
-import com.github.jmpala.Imageboard.dao.Category;
 import com.github.jmpala.Imageboard.dto.BoardDto;
 import com.github.jmpala.Imageboard.mapper.BoardMapper;
 import com.github.jmpala.Imageboard.repository.BoardRepository;
@@ -18,7 +17,7 @@ public class BoardServiceImpl implements BoardService {
 
     private BoardRepository boardRepository;
     private BoardMapper boardMapper;
-    private Category category;
+
 
     @Autowired
     public BoardServiceImpl(BoardRepository boardRepository, BoardMapper boardMapper) {
@@ -31,7 +30,7 @@ public class BoardServiceImpl implements BoardService {
     public List<BoardDto> findAll() {
         List<Board> boards = boardRepository.findAll();
         List<BoardDto> boardDtos = new ArrayList<>();
-        for (Board board: boards) {
+        for (Board board : boards) {
             boardDtos.add(boardMapper.boardToBoardDto(board));
         }
         return boardDtos;

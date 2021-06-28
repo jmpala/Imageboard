@@ -5,5 +5,4 @@ import com.github.jmpala.Imageboard.dto.CategoryDto;
 
 public interface CategoryService extends BaseService<CategoryDto, Long> {
 
-
 }
