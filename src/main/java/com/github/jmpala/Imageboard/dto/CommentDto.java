@@ -17,5 +17,5 @@ public class CommentDto {
 
     private String message;
 
-    private PostDto postDto;
+    private Long postId;
 }

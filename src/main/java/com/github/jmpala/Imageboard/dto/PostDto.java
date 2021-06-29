@@ -16,13 +16,11 @@ public class PostDto {
 
     private Date created;
 
-    private String photo;
+    private String photoPath;
 
     private String title;
 
     private String body;
-
-    private BoardDto boardDto;
 
     private Long boardId;
 

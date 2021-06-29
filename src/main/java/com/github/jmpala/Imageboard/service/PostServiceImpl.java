@@ -1,13 +1,8 @@
 package com.github.jmpala.Imageboard.service;
 
-import com.github.jmpala.Imageboard.dao.Board;
-import com.github.jmpala.Imageboard.dao.Category;
 import com.github.jmpala.Imageboard.dao.Post;
 import com.github.jmpala.Imageboard.dto.PostDto;
-import com.github.jmpala.Imageboard.mapper.BoardMapper;
 import com.github.jmpala.Imageboard.mapper.PostMapper;
-import com.github.jmpala.Imageboard.repository.BoardRepository;
-import com.github.jmpala.Imageboard.repository.CategoryRepository;
 import com.github.jmpala.Imageboard.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,19 +16,12 @@ import java.util.Optional;
 public class PostServiceImpl implements PostService {
 
     private PostRepository postRepository;
-    private BoardRepository boardRepository;
     private PostMapper postMapper;
-    private BoardMapper boardMapper;
-    private CategoryRepository categoryRepository;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository, BoardRepository boardRepository,
-                           PostMapper postMapper, BoardMapper boardMapper, CategoryRepository categoryRepository) {
-        this.boardRepository = boardRepository;
+    public PostServiceImpl(PostRepository postRepository, PostMapper postMapper) {
         this.postRepository = postRepository;
         this.postMapper = postMapper;
-        this.boardMapper = boardMapper;
-        this.categoryRepository = categoryRepository;
     }
 
     @Override
@@ -42,10 +30,7 @@ public class PostServiceImpl implements PostService {
         List<Post> posts = postRepository.findAll();
         List<PostDto> postDtos = new ArrayList<>();
         for (Post post: posts) {
-            PostDto postDto = postMapper.postToPostDto(post);
-            postDto.setBoardDto(boardMapper.boardToBoardDto(post.getBoard()));
-            postDto.setBoardId(post.getBoard().getId());
-            postDtos.add(postDto);
+            postDtos.add(postMapper.postToPostDto(post));
         }
         return postDtos;
     }
@@ -56,22 +41,13 @@ public class PostServiceImpl implements PostService {
         Optional<Post> oPost = postRepository.findById(id);
         if (oPost.isEmpty())
             return null; // TODO: see what to return to the controller
-        PostDto postDto = postMapper.postToPostDto(oPost.get());
-        postDto.setBoardDto(boardMapper.boardToBoardDto(oPost.get().getBoard()));
-        postDto.setBoardId(oPost.get().getBoard().getId());
-        return Optional.of(postDto);
+        return Optional.of(postMapper.postToPostDto(oPost.get()));
     }
 
     @Override
     @Transactional
     public PostDto save(PostDto postDto) {
-        Post postDao = postMapper.postDtoToPost(postDto);
-        Category category = categoryRepository.findById(postDto.getBoardId()).get();
-        List<Board> boards = boardRepository.findBoardByCategory(category);
-        Board board = boards.get(0);
-        postDao.setBoard(board);
-        Post savedPost = postRepository.save(postDao);
-        return postMapper.postToPostDto(savedPost);
+        return postMapper.postToPostDto(postMapper.postDtoToPost(postDto));
     }
 
     @Override
@@ -91,10 +67,7 @@ public class PostServiceImpl implements PostService {
         List<Post> posts = postRepository.findTop30ByOrderByCreatedDesc();
         List<PostDto> postDtos = new ArrayList<>();
         for (Post post: posts) {
-            PostDto postDto = postMapper.postToPostDto(post);
-            postDto.setBoardDto(boardMapper.boardToBoardDto(post.getBoard()));
-            postDto.setId(post.getId());
-            postDtos.add(postDto);
+            postDtos.add(postMapper.postToPostDto(post));
         }
         return postDtos;
     }
@@ -105,10 +78,7 @@ public class PostServiceImpl implements PostService {
         List<Post> posts = postRepository.findByCategory(category);
         List<PostDto> postDtos = new ArrayList<>();
         for (Post post: posts) {
-            PostDto postDto = postMapper.postToPostDto(post);
-            postDto.setBoardDto(boardMapper.boardToBoardDto(post.getBoard()));
-            postDto.setId(post.getId());
-            postDtos.add(postDto);
+            postDtos.add(postMapper.postToPostDto(post));
         }
         return postDtos;
     }

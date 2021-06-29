@@ -21,5 +21,5 @@ public class BoardDto {
 
     private boolean isNSFW;
 
-    private List<PostDto> posts;
+    private List<Long> postsIds;
 }
